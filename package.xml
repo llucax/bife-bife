@@ -19,7 +19,7 @@ in mind. One of the main goals of BIFE is to be fast.
     </maintainers>
 
     <release>
-        <version>1.0.0beta1</version>
+        <version>1.0.0beta2</version>
         <date>2003-06-29</date>
         <state>beta</state>
         <notes>Check http://bife.llucax.hn.org/ for details.</notes>

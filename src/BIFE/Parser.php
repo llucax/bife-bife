@@ -153,7 +153,7 @@ class BIFE_Parser {
                 strtr(ucwords(strtr(strtolower($name), ':', ' ')), ' ', '/') .
                 '.php';
             if (@include_once $inc) {
-                $this->includes[] = $inc;
+                $this->requires[] = $inc;
             }
         }
         if (class_exists($class)) {
@@ -277,7 +277,7 @@ class BIFE_Parser {
         fclose($fp);
         if ($this->cache) {
             $fp = fopen($cache, 'w');
-            fputs($fp, serialize($this->includes) . "\n");
+            fputs($fp, serialize($this->requires) . "\n");
             fputs($fp, serialize($this->root));
             fclose($fp);
         }
