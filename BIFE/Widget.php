@@ -26,52 +26,72 @@
 // $Id$
 //
 
-// +X2C includes
-require_once 'BIFE/Fallback.php';
-// ~X2C
-
-// +X2C Class 7 :Translate
+// +X2C Class 3 :Widget
 /**
- * This is a generic and simple (but very usefull) BIFE_Fallback implementation. Translate widgets using a template with it's name, prepended with 'bife_'. If not template is found, it copy the XML to the output.
+ * Base widget class.
  *
  * @package BIFE
  * @access public
+ * @abstract
  */
-class BIFE_Translate extends BIFE_Fallback {
+class BIFE_Widget {
+    /**
+     * Attribute list.
+     *
+     * @var    array $attrs
+     * @access protected
+     */
+    var $attrs = array();
+
     // ~X2C
 
-    // +X2C Operation 12
+    // +X2C Operation 126
     /**
-     * Renders the widget.
+     * Constructor.
      *
-     * @param  HTML_Template_HIT &$template Template to use to render the widget.
+     * @param  array $attrs Attributes.
      *
-     * @return string
+     * @return void
      * @access public
      */
-    function render(&$template) // ~X2C
+    function BIFE_Widget($attrs) // ~X2C
     {
-        $name = "bife_{$this->name}";
-        if ($template->exists($name, '')) {
-            $this->attrs['CONTENTS'] = $this->renderContents($template);
-            $out = $template->parse($name, $this->attrs, '', '');
-        } else {
-            $name = $this->name;
-            $out = "<$name";
-            foreach ($this->attrs as $attr => $val) {
-                $out .= sprintf(' %s="%s"', $attr, $val);
-            }
-            $contents = $this->renderContents($template);
-            if ($contents !== '') {
-                $out .= ">$contents</$name>";
-            } else {
-                $out .= "/>";
-            }
-        }
-        return $out;
+        $this->__construct($attrs);
     }
     // -X2C
 
-} // -X2C Class :Translate
+    // +X2C Operation 127
+    /**
+     * Constructor.
+     *
+     * @param  array $attrs Attributes.
+     *
+     * @return void
+     * @access public
+     */
+    function __construct($attrs) // ~X2C
+    {
+        $this->attrs = $attrs;
+    }
+    // -X2C
+
+    // +X2C Operation 4
+    /**
+     * Renders the widget using a template returning a string with the results.
+     *
+     * @param  HTML_Template_HIT &$template Template object to render the widget.
+     *
+     * @return string
+     * @access public
+     * @abstract
+     */
+    function render(&$template) // ~X2C
+    {
+        trigger_error('Method not implemented '.get_class($this).
+            '::render().', E_USER_ERROR);
+    }
+    // -X2C
+
+} // -X2C Class :Widget
 
 ?>

@@ -19,7 +19,7 @@
 // | along with Hooks; if not, write to the Free Software Foundation,   |
 // | Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA      |
 // +--------------------------------------------------------------------+
-// | Created: Wed May 17 18:16:54 ART 2003                              |
+// | Created: Tue May 20 17:57:56 2003                                  |
 // | Authors: Leandro Lucarella <luca@lugmen.org.ar>                    |
 // +--------------------------------------------------------------------+
 //
@@ -27,51 +27,61 @@
 //
 
 // +X2C includes
-require_once 'BIFE/Fallback.php';
+require_once 'BIFE/Container.php';
 // ~X2C
 
-// +X2C Class 7 :Translate
+// +X2C Class 61 :Fallback
 /**
- * This is a generic and simple (but very usefull) BIFE_Fallback implementation. Translate widgets using a template with it's name, prepended with 'bife_'. If not template is found, it copy the XML to the output.
+ * Fallback widget to use when no specific widget is implemented.
  *
  * @package BIFE
  * @access public
+ * @abstract
  */
-class BIFE_Translate extends BIFE_Fallback {
+class BIFE_Fallback extends BIFE_Container {
+    /**
+     * Name of the widget.
+     *
+     * @var    string $name
+     * @access private
+     */
+    var $name = '';
+
     // ~X2C
 
-    // +X2C Operation 12
+    // +X2C Operation 62
     /**
-     * Renders the widget.
+     * Constructor.
      *
-     * @param  HTML_Template_HIT &$template Template to use to render the widget.
+     * @param  string $name Name of the widget to draw.
+     * @param  array $attrs Attributes.
      *
-     * @return string
+     * @return void
      * @access public
      */
-    function render(&$template) // ~X2C
+    function BIFE_Fallback($name, $attrs) // ~X2C
     {
-        $name = "bife_{$this->name}";
-        if ($template->exists($name, '')) {
-            $this->attrs['CONTENTS'] = $this->renderContents($template);
-            $out = $template->parse($name, $this->attrs, '', '');
-        } else {
-            $name = $this->name;
-            $out = "<$name";
-            foreach ($this->attrs as $attr => $val) {
-                $out .= sprintf(' %s="%s"', $attr, $val);
-            }
-            $contents = $this->renderContents($template);
-            if ($contents !== '') {
-                $out .= ">$contents</$name>";
-            } else {
-                $out .= "/>";
-            }
-        }
-        return $out;
+        $this->__construct($name, $attrs);
     }
     // -X2C
 
-} // -X2C Class :Translate
+    // +X2C Operation 63
+    /**
+     * Constructor.
+     *
+     * @param  string $name Name of the widget.
+     * @param  array $attrs Attributes.
+     *
+     * @return void
+     * @access public
+     */
+    function __construct($name, $attrs) // ~X2C
+    {
+        parent::__construct($attrs);
+        $this->name = strtolower(strtr($name, ':', '_'));
+    }
+    // -X2C
+
+} // -X2C Class :Fallback
 
 ?>

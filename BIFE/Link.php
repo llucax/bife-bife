@@ -19,7 +19,7 @@
 // | along with Hooks; if not, write to the Free Software Foundation,   |
 // | Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA      |
 // +--------------------------------------------------------------------+
-// | Created: Wed May 17 18:16:54 ART 2003                              |
+// | Created: Sun Jun 1 20:00:20 2003                                   |
 // | Authors: Leandro Lucarella <luca@lugmen.org.ar>                    |
 // +--------------------------------------------------------------------+
 //
@@ -27,20 +27,85 @@
 //
 
 // +X2C includes
-require_once 'BIFE/Fallback.php';
+require_once 'BIFE/Container.php';
 // ~X2C
 
-// +X2C Class 7 :Translate
+// +X2C Class 110 :Link
 /**
- * This is a generic and simple (but very usefull) BIFE_Fallback implementation. Translate widgets using a template with it's name, prepended with 'bife_'. If not template is found, it copy the XML to the output.
+ * Link to another page.
  *
  * @package BIFE
  * @access public
  */
-class BIFE_Translate extends BIFE_Fallback {
+class BIFE_Link extends BIFE_Container {
     // ~X2C
 
-    // +X2C Operation 12
+    // +X2C Operation 111
+    /**
+     * Constructor.
+     *
+     * @param  array $attrs Attributes.
+     *
+     * @return void
+     * @access public
+     */
+    function BIFE_Link($attrs) // ~X2C
+    {
+        $this->__construct($attrs);
+    }
+    // -X2C
+
+    // +X2C Operation 112
+    /**
+     * Constructor.
+     *
+     * @param  array $attrs Attributes.
+     *
+     * @return void
+     * @access public
+     */
+    function __construct($attrs) // ~X2C
+    {
+        $link_attrs['URL']    = $this->getURL($attrs);
+        $link_attrs['DESC']   = @$attrs['DESC'];
+        $link_attrs['TARGET'] = @$attrs['TARGET'];
+        parent::__construct($link_attrs);
+    }
+    // -X2C
+
+    // +X2C Operation 142
+    /**
+     * Gets a URL string based on Link attributes.
+     *
+     * @param  array $attrs Link attributes.
+     *
+     * @return string
+     * @access public
+     */
+    function getURL($attrs) // ~X2C
+    {
+        $url = @$attrs['URL'];
+        unset($attrs['URL']);
+        if (isset($attrs['BIFE'])) {
+            $attrs['DATA-BIFE']  = $attrs['BIFE'];
+            unset($attrs['BIFE']);
+        }
+        $query = array();
+        foreach($attrs as $name => $value) {
+            if (substr($name, 0, 5) === 'DATA-') {
+                if ($name = substr($name, 5)) {
+                    $query[] = urlencode($name) . '=' . urlencode($value);
+                }
+            }
+        }
+        if ($query) {
+            $url .= '?' . join('&', $query);
+        }
+        return $url;
+    }
+    // -X2C
+
+    // +X2C Operation 157
     /**
      * Renders the widget.
      *
@@ -51,27 +116,11 @@ class BIFE_Translate extends BIFE_Fallback {
      */
     function render(&$template) // ~X2C
     {
-        $name = "bife_{$this->name}";
-        if ($template->exists($name, '')) {
-            $this->attrs['CONTENTS'] = $this->renderContents($template);
-            $out = $template->parse($name, $this->attrs, '', '');
-        } else {
-            $name = $this->name;
-            $out = "<$name";
-            foreach ($this->attrs as $attr => $val) {
-                $out .= sprintf(' %s="%s"', $attr, $val);
-            }
-            $contents = $this->renderContents($template);
-            if ($contents !== '') {
-                $out .= ">$contents</$name>";
-            } else {
-                $out .= "/>";
-            }
-        }
-        return $out;
+        $this->attrs['CONTENTS'] = $this->renderContents($template);
+        return $template->parse('bife_link', $this->attrs, '', '');
     }
     // -X2C
 
-} // -X2C Class :Translate
+} // -X2C Class :Link
 
 ?>

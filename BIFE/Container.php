@@ -27,51 +27,72 @@
 //
 
 // +X2C includes
-require_once 'BIFE/Fallback.php';
+require_once 'BIFE/Widget.php';
 // ~X2C
 
-// +X2C Class 7 :Translate
+// +X2C Class 5 :Container
 /**
- * This is a generic and simple (but very usefull) BIFE_Fallback implementation. Translate widgets using a template with it's name, prepended with 'bife_'. If not template is found, it copy the XML to the output.
+ * Base container widget class.
  *
  * @package BIFE
  * @access public
+ * @abstract
  */
-class BIFE_Translate extends BIFE_Fallback {
+class BIFE_Container extends BIFE_Widget {
+    /**
+     * Widget contents.
+     *
+     * @var    array $contents
+     * @access public
+     */
+    var $contents = array();
+
     // ~X2C
 
-    // +X2C Operation 12
+    // +X2C Operation 6
     /**
-     * Renders the widget.
+     * Adds contents to the container.
      *
-     * @param  HTML_Template_HIT &$template Template to use to render the widget.
+     * @param  mixed &$contents Contents to add to the container.
+     *
+     * @return void
+     * @access public
+     */
+    function addContents(&$contents) // ~X2C
+    {
+        if (is_object($contents)) {
+            $this->contents[] =& $contents;
+        } else {
+            $this->contents[] = $contents;
+        }
+    }
+    // -X2C
+
+    // +X2C Operation 59
+    /**
+     * Renders the widget using a template returning a string with the results.
+     *
+     * @param  HTML_Template_HIT &$template Template object to render the widget.
      *
      * @return string
      * @access public
      */
-    function render(&$template) // ~X2C
+    function renderContents(&$template) // ~X2C
     {
-        $name = "bife_{$this->name}";
-        if ($template->exists($name, '')) {
-            $this->attrs['CONTENTS'] = $this->renderContents($template);
-            $out = $template->parse($name, $this->attrs, '', '');
-        } else {
-            $name = $this->name;
-            $out = "<$name";
-            foreach ($this->attrs as $attr => $val) {
-                $out .= sprintf(' %s="%s"', $attr, $val);
-            }
-            $contents = $this->renderContents($template);
-            if ($contents !== '') {
-                $out .= ">$contents</$name>";
+        $c = count($this->contents);
+        $o = '';
+        for ($i = 0; $i < $c; $i++) {
+            if (is_object($this->contents[$i])) {
+                $o .= $this->contents[$i]->render($template);
             } else {
-                $out .= "/>";
+                $o .= $this->contents[$i];
             }
         }
-        return $out;
+        return $o;
     }
     // -X2C
 
-} // -X2C Class :Translate
+
+} // -X2C Class :Container
 
 ?>
