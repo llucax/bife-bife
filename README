@@ -1,0 +1,15 @@
+$Id$
+
+BIFE is a kind of framework inspired by Bif <http://www.lunix.com.ar/Bif.php>
+to split a PHP application (website or whatever) into 3 layers:
+XML:  Content management.
+PHP:  Programming.
+HTML: Look & Feel (it can be other type of output, not just HTML).
+
+The main goals of this proyect are:
+- Keep XML layer really easy to use for the end user, so no need of HTML or
+  PHP would be needed to make a XML page.
+- Speed. One of the main goals of this proyect is to be fast. Because of
+  this, PHP and HTML layers can have extra complications.
+
+You can see the tentative ROADMAP.
