@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="org.omg/standards/UML" verified="false" timestamp="" xmi.version="1.2" >
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://uml.sf.net</XMI.exporter>
+   <XMI.exporterVersion>1.1</XMI.exporterVersion>
+  </XMI.documentation>
+  <XMI.model xmi.name="bife" href="/home/luca/website/www/test/bife/bife/bife.xmi" />
+  <XMI.metamodel xmi.name="UML" href="UML.xml" xmi.version="1.3" />
+ </XMI.header>
+ <XMI.content>
+  <docsettings viewid="2" documentation="Parse XML data getting widgets." uniqueid="159" />
+  <umlobjects>
+   <UML:Class stereotype="" package="BIFE" xmi.id="3" abstract="1" documentation="Base widget class." name="Widget" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="126" type="void" abstract="0" documentation="Constructor." name="BIFE_Widget" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="array" abstract="0" documentation="Attributes." name="attrs" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="127" type="void" abstract="0" documentation="Constructor." name="__construct" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="array" abstract="0" documentation="Attributes." name="attrs" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="4" type="string" abstract="1" documentation="Renders the widget using a template returning a string with the results." name="render" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="&amp;HTML_Template_HIT" abstract="0" documentation="Template object to render the widget." name="template" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Attribute stereotype="" package="" xmi.id="125" value="array()" type="array" abstract="0" documentation="Attribute list." name="attrs" static="0" scope="202" />
+   </UML:Class>
+   <UML:Class stereotype="" package="BIFE" xmi.id="5" abstract="1" documentation="Base container widget class." name="Container" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="6" type="void" abstract="0" documentation="Adds contents to the container." name="addContents" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="&amp;mixed" abstract="0" documentation="Contents to add to the container." name="contents" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="59" type="string" abstract="0" documentation="Renders the widget using a template returning a string with the results." name="renderContents" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="&amp;HTML_Template_HIT" abstract="0" documentation="Template object to render the widget." name="template" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Attribute stereotype="" package="" xmi.id="47" value="array()" type="array" abstract="0" documentation="Widget contents." name="contents" static="0" scope="200" />
+   </UML:Class>
+   <UML:Class stereotype="" package="BIFE" xmi.id="25" abstract="0" documentation="This is the XML Parser." name="Parser" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="30" type="void" abstract="0" documentation="Constructor." name="BIFE_Parser" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="''" type="string" abstract="0" documentation="Fallback class name (none if empty)." name="fallback" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="'/tmp'" type="string" abstract="0" documentation="XML cache directory. Empty is no caching will be done." name="cache" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="31" type="void" abstract="0" documentation="Constructor." name="__construct" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="''" type="string" abstract="0" documentation="Fallback class name (none if empty)." name="fallback" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="'/tmp'" type="string" abstract="0" documentation="XML cache directory. Empty is no caching will be done." name="cache" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="32" type="void" abstract="0" documentation="Destructor." name="__destruct" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="33" type="void" abstract="0" documentation="XML parser start of element handler." name="startElement" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="resource" abstract="0" documentation="XML parser resource." name="parser" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="" type="string" abstract="0" documentation="XML tag name." name="name" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="3" value="" type="array" abstract="0" documentation="XML tag attributes." name="attrs" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="34" type="void" abstract="0" documentation="XML parser end of element handler." name="endElement" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="resource" abstract="0" documentation="XML parser resource." name="parser" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="" type="string" abstract="0" documentation="XML tag name." name="name" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="35" type="void" abstract="0" documentation="XML parser character data handler." name="characterData" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="resource" abstract="0" documentation="XML parser resource." name="parser" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="" type="string" abstract="0" documentation="XML character data." name="data" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="36" type="void" abstract="0" documentation="Parse a string with XML data." name="parse" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="string" abstract="0" documentation="XML string to parse." name="data" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="true" type="bool" abstract="0" documentation="Indicates if is the last string to parse." name="final" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="37" type="&amp;BIFE_Widget" abstract="0" documentation="Parse a XML file with a complete and valid XML document." name="parseFile" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="string" abstract="0" documentation="Filename to parse." name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="74" type="&amp;BIFE_Widget" abstract="0" documentation="Parse a XML string with a complete and valid XML document." name="parseString" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="string" abstract="0" documentation="XML data to parse." name="data" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Attribute stereotype="" package="" xmi.id="26" value="null" type="BIFE_Widget" abstract="0" documentation="Top level widget." name="root" static="0" scope="202" />
+    <UML:Attribute stereotype="" package="" xmi.id="27" value="null" type="resource" abstract="0" documentation="XML parser resource." name="parser" static="0" scope="202" />
+    <UML:Attribute stereotype="" package="" xmi.id="29" value="array()" type="array" abstract="0" documentation="BIFE widgets stack." name="stack" static="0" scope="202" />
+    <UML:Attribute stereotype="" package="" xmi.id="84" value="''" type="string" abstract="0" documentation="Fallback class to use in case that a widget class is not found." name="fallback" static="0" scope="202" />
+    <UML:Attribute stereotype="" package="" xmi.id="148" value="'/tmp'" type="string" abstract="0" documentation="XML cache directory. Empty if no cahching must be done (for current dir use '.')." name="cache" static="0" scope="202" />
+    <UML:Attribute stereotype="" package="" xmi.id="156" value="array()" type="array" abstract="0" documentation="Files required by the parsed XML file." name="requires" static="0" scope="202" />
+   </UML:Class>
+   <UML:Class stereotype="" package="BIFE" xmi.id="61" abstract="1" documentation="Fallback widget to use when no specific widget is implemented." name="Fallback" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="62" type="void" abstract="0" documentation="Constructor." name="BIFE_Fallback" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="string" abstract="0" documentation="Name of the widget to draw." name="name" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="" type="array" abstract="0" documentation="Attributes." name="attrs" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="63" type="void" abstract="0" documentation="Constructor." name="__construct" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="1" value="" type="string" abstract="0" documentation="Name of the widget." name="name" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="2" value="" type="array" abstract="0" documentation="Attributes." name="attrs" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Attribute stereotype="" package="" xmi.id="129" value="''" type="string" abstract="0" documentation="Name of the widget." name="name" static="0" scope="201" />
+   </UML:Class>
+  </umlobjects>
+  <diagrams>
+   <diagram snapgrid="0" showattsig="1" fillcolor="#ffffc0" showgrid="1" showopsig="0" usefillcolor="1" snapx="10" snapy="10" showatts="1" xmi.id="2" documentation="" type="402" showops="1" showpackage="1" name="Core Classes" localid="30000" showstereotype="0" showscope="1" font="Helvetica,9,-1,5,48,0,0,0,0,0" linecolor="#ff0000" >
+    <widgets>
+     <UML:ConceptWidget usesdiagramfillcolour="0" width="148" showattsigs="601" usesdiagramusefillcolour="0" x="238" linecolour="#ff0000" y="19" showopsigs="600" usesdiagramlinecolour="0" fillcolour="#ffffc0" height="75" usefillcolor="1" showattributes="1" xmi.id="3" showoperations="1" showpackage="1" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,48,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="0" width="173" showattsigs="601" usesdiagramusefillcolour="0" x="226" linecolour="#ff0000" y="139" showopsigs="600" usesdiagramlinecolour="0" fillcolour="#ffffc0" height="60" usefillcolor="1" showattributes="1" xmi.id="5" showoperations="1" showpackage="1" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,48,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="0" width="123" showattsigs="601" usesdiagramusefillcolour="0" x="251" linecolour="#ff0000" y="242" showopsigs="600" usesdiagramlinecolour="0" fillcolour="#ffffc0" height="60" usefillcolor="1" showattributes="1" xmi.id="61" showoperations="1" showpackage="1" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,48,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="0" width="171" showattsigs="601" usesdiagramusefillcolour="0" x="20" linecolour="#ff0000" y="19" showopsigs="600" usesdiagramlinecolour="0" fillcolour="#ffffc0" height="240" usefillcolor="1" showattributes="1" xmi.id="25" showoperations="1" showpackage="1" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,48,0,0,0,0,0" />
+    </widgets>
+    <messages/>
+    <associations>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="3" widgetaid="5" documentation="" type="500" >
+      <linepath>
+       <startpoint startx="312" starty="139" />
+       <endpoint endx="312" endy="94" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="5" widgetaid="61" documentation="" type="500" >
+      <linepath>
+       <startpoint startx="312" starty="242" />
+       <endpoint endx="312" endy="199" />
+      </linepath>
+     </UML:AssocWidget>
+    </associations>
+   </diagram>
+  </diagrams>
+  <listview>
+   <listitem open="1" type="800" id="-1" label="Views" >
+    <listitem open="1" type="801" id="-1" label="Logical View" >
+     <listitem open="1" type="803" id="-1" label="BIFE" >
+      <listitem open="0" type="813" id="5" label="Container" >
+       <listitem open="0" type="815" id="6" label="addContents" />
+       <listitem open="0" type="814" id="47" label="contents" />
+       <listitem open="0" type="815" id="59" label="renderContents" />
+      </listitem>
+      <listitem open="0" type="807" id="2" label="Core Classes" />
+      <listitem open="0" type="813" id="61" label="Fallback" >
+       <listitem open="0" type="815" id="62" label="BIFE_Fallback" />
+       <listitem open="0" type="815" id="63" label="__construct" />
+       <listitem open="0" type="814" id="129" label="name" />
+      </listitem>
+      <listitem open="0" type="813" id="25" label="Parser" >
+       <listitem open="0" type="815" id="30" label="BIFE_Parser" />
+       <listitem open="0" type="815" id="31" label="__construct" />
+       <listitem open="0" type="815" id="32" label="__destruct" />
+       <listitem open="0" type="814" id="148" label="cache" />
+       <listitem open="0" type="815" id="35" label="characterData" />
+       <listitem open="0" type="815" id="34" label="endElement" />
+       <listitem open="0" type="814" id="84" label="fallback" />
+       <listitem open="0" type="815" id="36" label="parse" />
+       <listitem open="0" type="815" id="37" label="parseFile" />
+       <listitem open="0" type="815" id="74" label="parseString" />
+       <listitem open="0" type="814" id="27" label="parser" />
+       <listitem open="0" type="814" id="156" label="requires" />
+       <listitem open="0" type="814" id="26" label="root" />
+       <listitem open="0" type="814" id="29" label="stack" />
+       <listitem open="0" type="815" id="33" label="startElement" />
+      </listitem>
+      <listitem open="0" type="813" id="3" label="Widget" >
+       <listitem open="0" type="815" id="126" label="BIFE_Widget" />
+       <listitem open="0" type="815" id="127" label="__construct" />
+       <listitem open="0" type="814" id="125" label="attrs" />
+       <listitem open="0" type="815" id="4" label="render" />
+      </listitem>
+     </listitem>
+    </listitem>
+    <listitem open="1" type="802" id="-1" label="Use Case View" />
+   </listitem>
+  </listview>
+ </XMI.content>
+</XMI>
