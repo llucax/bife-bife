@@ -19,32 +19,28 @@ in mind. One of the main goals of BIFE is to be fast.
     </maintainers>
 
     <release>
-        <version>0.11</version>
+        <version>1.0.0beta1</version>
         <date>2003-06-29</date>
-        <state>alpha</state>
-        <notes>Check http://www.llucax.hn.org/desarrollo/bife/ for details.</notes>
+        <state>beta</state>
+        <notes>Check http://bife.llucax.hn.org/ for details.</notes>
         <provides type="class" name="BIFE_Parser"/>
         <provides type="class" name="BIFE_Widget"/>
         <provides type="class" name="BIFE_Container"/>
         <provides type="class" name="BIFE_Fallback"/>
-        <provides type="class" name="BIFE_Link"/>
-        <provides type="class" name="BIFE_Translate"/>
         <filelist>
             <!-- PHP -->
-            <file role="php">BIFE/Parser.php</file>
-            <file role="php">BIFE/Widget.php</file>
-            <file role="php">BIFE/Container.php</file>
-            <file role="php">BIFE/Fallback.php</file>
-            <file role="php">BIFE/Link.php</file>
-            <file role="php">BIFE/Translate.php</file>
+            <dir name="/" baseinstalldir="BIFE" role="php">
+                <file install-as="Parser.php">src/BIFE/Parser.php</file>
+                <file install-as="Widget.php">src/BIFE/Widget.php</file>
+                <file install-as="Container.php">src/BIFE/Container.php</file>
+                <file install-as="Fallback.php">src/BIFE/Fallback.php</file>
+            </dir>
             <!-- DOC -->
-            <file role="doc">README</file>
-            <file role="doc">ROADMAP</file>
-            <file role="doc">examples/index.php</file>
-            <file role="doc">examples/index.xbf</file>
-            <file role="doc">examples/templates/bife_page.tpl.html</file>
-            <file role="doc">examples/templates/bife_title.tpl.html</file>
-            <file role="doc">examples/templates/bife_link.tpl.html</file>
+            <dir name="/" role="doc">
+                <file>README</file>
+                <file>ROADMAP</file>
+                <file>examples/index.php</file>
+            </dir>
         </filelist>
     </release>
     <deps>

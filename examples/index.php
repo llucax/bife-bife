@@ -26,23 +26,10 @@
 // $Id$
 //
 
-$tmp = ini_get('include_path');
-ini_set('include_path', "..:$tmp");
-unset($tmp);
+ini_set('include_path', '../src:'.ini_get('include_path'));
 umask('002');
 
-require_once 'HTML/Template/HIT.php';
-require_once 'BIFE/Parser.php';
-require_once 'BIFE/Translate.php';
-
-$file = isset($_REQUEST['BIFE']) ? $_REQUEST['BIFE'] : 'index.xbf';
-#$file = isset($_SERVER['PATH_INFO']) ? ".{$_SERVER['PATH_INFO']}" : 'index.xbf';
-
-$template =& new HTML_Template_HIT('templates');
-
-$parser =& new BIFE_Parser('BIFE_Translate');
-$page =& $parser->parseFile($file);
-$parser->__destruct();
-echo $page->render($template);
-
 ?>
+
+BIFE is an abstract framework, to see a simple implementation download
+<A href="http://bife.llucax.hn.org/">BIFE_Base package</A>.
