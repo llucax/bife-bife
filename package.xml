@@ -45,6 +45,6 @@ in mind. One of the main goals of BIFE is to be fast.
     </release>
     <deps>
         <dep type="php" rel="ge">4.2.3</dep>
-        <dep type="pkg" rel="ge" version="1.0.0beta">HTML_Template_HIT</dep>
+        <dep type="pkg" rel="ge" version="1.0.0beta1">HTML_Template_HIT</dep>
     </deps>
 </package>
